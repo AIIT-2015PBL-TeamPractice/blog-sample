@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :blogs
+  has_many :articles
   has_many :comments
 
   attr_accessor :login

@@ -1,10 +1,10 @@
-<%= form_for(@blog) do |f| %>
-  <% if @blog.errors.any? %>
+<%= form_for(@article) do |f| %>
+  <% if @article.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
       <ul>
-      <% @blog.errors.full_messages.each do |message| %>
+      <% @article.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -21,7 +21,7 @@
   </div>
 
   <%= f.hidden_field :author_id, value: current_user.id %>
-  
+
   <div class="actions">
     <%= f.submit %>
   </div>
