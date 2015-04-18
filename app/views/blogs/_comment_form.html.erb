@@ -12,8 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :contents %><br>
-    <%= f.text_area :contents %>
+    <%= f.text_area :contents, placeholder: 'Write your comment!' %>
   </div>
 
   <%= f.hidden_field :author, value: current_user.username %>
