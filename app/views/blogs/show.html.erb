@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @blog.title %></h1>
+
+<p>
+  <%= @blog.content %>
+</p>
+
+<p>
+  by <%= @author.username %>
+</p>
+
+<hr>
+
+<h2>Comments</h2>
+
+<table>
+  <tbody>
+    <% if @comments != nil %>
+      <% @comments.each do |comment| %>
+        <tr>
+          <td>
+            <p>
+              <%= comment.contents %>
+            </p>
+            <p>
+              by <strong><%= comment.author %></strong>
+            </p>
+            <%= link_to 'Show', comment %> |
+            <%= link_to 'Edit', edit_comment_path(comment) %> |
+            <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+    <% if user_signed_in? %>
+      <tr>
+        <td>
+          <%= render 'comment_form' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr>
+<% if user_signed_in? && current_user.id == @blog.author_id %>
+<%= link_to 'Edit Article', edit_blog_path(@blog) %> |
+<% end %>
+<%= link_to 'Back', blogs_path %>
