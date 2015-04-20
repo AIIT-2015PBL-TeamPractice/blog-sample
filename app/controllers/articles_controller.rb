@@ -66,13 +66,13 @@ class ArticlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
-      @author = User.find(@article.author_id)
+      @author = User.find(@article.user_id)
       @comment = Comment.new
       @comments = Comment.where(article_id: @article.id).order('created_at DESC')
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :content, :author_id)
+      params.require(:article).permit(:title, :content, :user_id)
     end
 end

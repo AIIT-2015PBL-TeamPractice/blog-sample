@@ -43,7 +43,7 @@
 </table>
 
 <hr>
-<% if user_signed_in? && current_user.id == @article.author_id %>
+<% if user_signed_in? && current_user.id == @article.user_id %>
 <%= link_to 'Edit Article', edit_article_path(@article) %> |
 <% end %>
 <%= link_to 'Back', articles_path %>
